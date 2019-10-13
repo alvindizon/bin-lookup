@@ -1,8 +1,10 @@
-package com.alvindizon.binlookup;
+package com.alvindizon.binlookup.features.lookup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.alvindizon.binlookup.R;
 
 public class MainActivity extends AppCompatActivity {
 
