@@ -2,13 +2,12 @@ package com.alvindizon.binlookup.features.lookup;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.alvindizon.binlookup.R;
 import com.alvindizon.binlookup.core.ViewModelFactory;
 import com.alvindizon.binlookup.data.network.status.Status;
 import com.alvindizon.binlookup.databinding.ActivityMainBinding;
@@ -28,11 +27,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Injector.getViewModelComponent().inject(this);
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         viewModel = new ViewModelProvider(this, viewModelFactory).get(MainViewModel.class);
-        binding.setViewModel(viewModel);
-        binding.setLifecycleOwner(this);
-        binding.executePendingBindings();
         viewModel.getNetworkStatus().observe(this, status -> {
             if(status == Status.ERROR) {
                 Toast.makeText(this, "Error fetching results.", Toast.LENGTH_SHORT).show();
