@@ -1,6 +1,7 @@
 package com.alvindizon.binlookup.features.lookup;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -41,16 +42,19 @@ public class MainActivity extends AppCompatActivity {
     private void handleStatus(UIState status) {
         switch (status.getStatus()) {
             case LOADING:
-                binding.progressBar.setVisibility(View.VISIBLE);
+                binding.veilLayout.setVisibility(View.VISIBLE);
+                binding.errorText.setVisibility(View.INVISIBLE);
+                binding.veilLayout.veil();
                 break;
             case SUCCESS:
-                binding.progressBar.setVisibility(View.GONE);
-                binding.resultsView.setVisibility(View.VISIBLE);
+                binding.veilLayout.setVisibility(View.VISIBLE);
                 setResultToUi(status.getBinInfo());
+                binding.veilLayout.unVeil();
                 break;
             case ERROR:
-                binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(this, status.getErrorMessage(), Toast.LENGTH_SHORT).show();
+                binding.veilLayout.setVisibility(View.INVISIBLE);
+                binding.errorText.setVisibility(View.VISIBLE);
+                binding.errorText.setText(status.getErrorMessage());
                 break;
             default:
                 break;

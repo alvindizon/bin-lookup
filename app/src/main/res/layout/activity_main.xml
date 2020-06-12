@@ -17,17 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bin" />
 
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        style="?android:attr/progressBarStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
     <EditText
         android:id="@+id/bin"
         android:layout_width="0dp"
@@ -44,17 +33,35 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="451643" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/results_view"
-        style="@style/CardViewStyle"
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Error"/>
+
+    <com.skydoves.androidveil.VeilLayout
+        android:id="@+id/veil_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:veilLayout_radius="6dp"
+        app:veilLayout_shimmerEnable="true"
+        app:veilLayout_veiled="false"
+        app:veilLayout_baseColor="@color/shimmerBase0"
+        app:veilLayout_highlightColor="@color/shimmerHighlight0"
+        app:veilLayout_baseAlpha="0.6"
+        app:veilLayout_highlightAlpha="1.0"
+        app:veilLayout_dropOff="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lookup_btn"
-        android:visibility="gone"
-        tools:visibility="visible">
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -158,7 +165,6 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@{viewModel.binInfo.country}"
                     android:textSize="24sp"
                     tools:text="Denmark" />
             </RelativeLayout>
@@ -215,6 +221,6 @@
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.skydoves.androidveil.VeilLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
