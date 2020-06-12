@@ -16,9 +16,9 @@ public class Country {
     @Json(name = "currency")
     private String currency;
     @Json(name = "latitude")
-    private Integer latitude;
+    private Double latitude;
     @Json(name = "longitude")
-    private Integer longitude;
+    private Double longitude;
 
     public String getNumeric() {
         return numeric;
@@ -60,19 +60,19 @@ public class Country {
         this.currency = currency;
     }
 
-    public Integer getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Integer latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public Integer getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Integer longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
