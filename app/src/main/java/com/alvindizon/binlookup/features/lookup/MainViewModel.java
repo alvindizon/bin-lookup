@@ -33,10 +33,7 @@ public class MainViewModel extends ViewModel {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe(disposable -> uiStatus.setValue(UIState.LOADING()))
             .subscribe(this::transformToBinInfo,
-                error -> {
-                    error.printStackTrace();
-                    handleError(error);
-                }
+                    this::handleError
             )
         );
     }
@@ -48,7 +45,11 @@ public class MainViewModel extends ViewModel {
                 case 404:
                     uiStatus.setValue(UIState.ERROR("BIN not found."));
                     break;
+                case 429:
+                    uiStatus.setValue(UIState.ERROR("Request speed limit reached, please try again after a minute."));
+                    break;
                 default:
+                    uiStatus.setValue(UIState.ERROR(error.getMessage()));
                     break;
             }
         } else {
