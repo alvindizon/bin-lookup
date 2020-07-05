@@ -57,8 +57,8 @@
 
         <com.skydoves.androidveil.VeilLayout
             android:id="@+id/veil_layout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             app:veilLayout_radius="6dp"
             app:veilLayout_shimmerEnable="true"
             app:veilLayout_veiled="false"
@@ -67,10 +67,6 @@
             app:veilLayout_baseAlpha="0.6"
             app:veilLayout_highlightAlpha="1.0"
             app:veilLayout_dropOff="0.5"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lookup_btn"
             android:visibility="invisible">
 
             <LinearLayout
@@ -229,6 +225,10 @@
                         tools:text="16" />
                 </RelativeLayout>
             </LinearLayout>
+
         </com.skydoves.androidveil.VeilLayout>
+
     </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
